@@ -39,7 +39,7 @@ def reply(comment):
 
 
 def run_bot(reddit, comments_replied):
-    for comment in reddit.subreddit("test").comments(limit=20):
+    for comment in reddit.subreddit("Jokes").comments(limit=5):
         if "!pun" in comment.body and comment.id not in comments_replied:  # and comment.author != reddit.user.me():
             print("Found pun request in comment " + comment.id)
             reply(comment)
@@ -65,7 +65,7 @@ def main():
     comments_replied = load_comments_replied(filename)
     while True:
         run_bot(reddit, comments_replied)
-        time.sleep(60)
+        time.sleep(20)
 
 
 if __name__ == '__main__':
