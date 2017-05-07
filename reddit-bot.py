@@ -39,9 +39,8 @@ def reply(comment):
 
 
 def run_bot(reddit, comments_replied):
-    for comment in reddit.subreddit("Jokes").comments(limit=5):
+    for comment in reddit.subreddit("puns").comments(limit=5):
         if "!pun" in comment.body and comment.id not in comments_replied:  # and comment.author != reddit.user.me():
-            print("Found pun request in comment " + comment.id)
             reply(comment)
             comments_replied.append(comment.id)
             save_comments_replied(filename, comments_replied)
